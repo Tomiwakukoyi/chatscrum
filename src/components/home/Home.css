@@ -1,0 +1,8 @@
+.links {
+  display: flex;
+}
+
+h4 {
+  margin: 10px;
+  cursor: pointer;
+}
