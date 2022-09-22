@@ -1,48 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import taskList from "../../static/tasks";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 
 export default function Tasks() {
-  const [weeklyTasks, setWeeklyTasks] = useState(taskList);
-  const [dailyTasks, setDailyTasks] = useState([]);
-
-  useEffect(() => {
-    setWeeklyTasks(taskList);
-  }, [taskList]);
+  const [taskRoll, updateTaskRoll] = useState(taskList);
 
   const handleOnDragEnd = (result) => {
-    const { source, destination } = result;
-
     if (!result.destination) return;
-    if (source.droppableId === destination.droppableId) {
-      if (source.droppableId === "tasket") {
-        let tempWeeklyTasks = Array.from(weeklyTasks);
-        const [reorderedItem] = tempWeeklyTasks.splice(result.source.index, 1);
-        tempWeeklyTasks.splice(destination.index, 0, reorderedItem);
-        setWeeklyTasks(tempWeeklyTasks);
-      } else {
-        let tempDailyTasks = Array.from(dailyTasks);
-        const [reorderedItem] = tempDailyTasks.splice(result.source.index, 1);
-        tempDailyTasks.splice(destination.index, 0, reorderedItem);
-        setDailyTasks(tempDailyTasks);
-      }
-    } else {
-      let tempWeeklyTasks = weeklyTasks;
-      let tempDailyTasks = dailyTasks;
+    const items = Array.from(taskRoll);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
 
-      if (source.droppableId === "tasket") {
-        const [removed] = tempWeeklyTasks.splice(source.index, 1);
-        tempDailyTasks.splice(destination.index, 0, removed);
-        setDailyTasks(tempDailyTasks);
-        setWeeklyTasks(tempWeeklyTasks);
-      } else {
-        const [removed] = tempDailyTasks.splice(source.index, 1);
-        tempWeeklyTasks.splice(destination.index, 0, removed);
-        setDailyTasks(tempDailyTasks);
-        setWeeklyTasks(tempWeeklyTasks);
-      }
-    }
+    updateTaskRoll(items);
   };
+
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
       <div className="tasker">
@@ -55,15 +26,15 @@ export default function Tasks() {
                 ref={provided.innerRef}
               >
                 <h3>Weekly Tasks</h3>
-                {weeklyTasks.map(({ id, item }, index) => {
+                {taskRoll.map(({ id, item }, index) => {
                   return (
                     <Draggable key={id} draggableId={id} index={index}>
                       {(provided) => (
                         <p
                           className="task"
-                          ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
+                          ref={provided.innerRef}
                         >
                           {item}
                         </p>
@@ -83,16 +54,39 @@ export default function Tasks() {
                 {...provided.droppableProps}
                 ref={provided.innerRef}
               >
-                <h3>Daily Targets</h3>
-                {dailyTasks.map(({ id, item }, index) => {
+                <h3>Daily Target</h3>
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </div>
+      </div>
+    </DragDropContext>
+  );
+}
+
+
+
+
+{/* <div className="tasker">
+        <div className="container">
+          <Droppable droppableId="tasket">
+            {(provided) => (
+              <div
+                className="weekly box"
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+              >
+                <h3>Weekly Tasks</h3>
+                {taskRoll.map(({ id, item }, index) => {
                   return (
                     <Draggable key={id} draggableId={id} index={index}>
                       {(provided) => (
                         <p
                           className="task"
-                          ref={provided.innerRef}
-                          {...provided.dragHandleProps}
                           {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          ref={provided.innerRef}
                         >
                           {item}
                         </p>
@@ -104,8 +98,18 @@ export default function Tasks() {
               </div>
             )}
           </Droppable>
+
+          <Droppable droppableId="tasketer">
+            {(provided) => (
+              <div
+                className="daily box"
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+              >
+                <h3>Daily Target</h3>
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
         </div>
-      </div>
-    </DragDropContext>
-  );
-}
+      </div> */}

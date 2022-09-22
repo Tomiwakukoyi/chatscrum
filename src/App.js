@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 import Home from "./components/home/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
 import Signup from "./components/sign-up/Signup";
 import Signin from "./components/sign-in/Signin";
 import Scrumboard from "./components/scrumboard/Scrumboard";
