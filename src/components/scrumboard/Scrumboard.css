@@ -1,54 +1,10 @@
 .scrumboard {
   position: relative;
 }
-h1 {
-  text-transform: uppercase;
-}
-.navi {
-  background-color: rgb(16, 16, 90);
-  color: white;
-  display: flex;
-  padding: 20px 10px;
-  justify-content: space-between;
-}
-
-#info {
-  padding: 20px;
-  font-weight: 500;
-  font-size: 16px;
-}
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .box {
-  width: 300px;
-  height: 320px;
+  width: 370px;
   box-shadow: 2px 4px 6px grey;
-  margin: 0px 70px 0;
 }
-.box h3 {
-  background-color: gray;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 0;
-  height: 40px;
-}
-.add {
-  margin-top: 50px;
-  margin-left: 65px;
-}
-
-.task {
-  padding: 5px;
-  font-weight: 500;
-  box-shadow: 1px 2px 2px grey;
-  color: rgb(16, 16, 90);
-}
-
 #modal {
   border-radius: 10px;
   box-shadow: 24px 4px 6px grey;
@@ -58,24 +14,87 @@ h1 {
   background-color: white;
   animation: blurIn 0.5s linear 1;
 }
-
-.hidden {
-  display: none;
+@keyframes blurIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-#modal {
-  width: 500px;
-  height: 280px;
+#modal h3 {
+  background-color: rgb(16, 16, 90);
+  color: white;
+}
+form {
+  padding: 50px;
+}
+#close {
+  border: 1px solid white;
+  cursor: pointer;
+}
+h3 {
+  text-align: center;
+  background-color: black;
+  padding: 10px;
+  color: #333;
+  margin: 0;
 }
 .header {
   display: flex;
   justify-content: space-between;
   background-color: rgb(16, 16, 90);
-  height: 50px;
-  padding: 0 10px;
-  margin-bottom: 3px;
-  color: white;
-  border-color: black;
 }
+.container {
+  display: flex;
+  justify-content: space-evenly;
+}
+.add {
+  margin-top: 50px;
+  margin-left: 65px;
+}
+#info {
+  padding: 20px;
+  font-weight: 500;
+  font-size: 16px;
+}
+.nav {
+  background-color: rgb(16, 16, 90);
+  color: white;
+  display: flex;
+  padding: 20px 10px;
+  justify-content: space-between;
+}
+#task {
+  padding: 5px;
+  font-weight: 500;
+  box-shadow: 1px 2px 2px gray;
+  color: rgb(16, 16, 90);
+}
+.task {
+  padding: 10px;
+  background-color: white;
+  color: gray;
+  font-weight: 500;
+  margin: 3px;
+  box-shadow: 1px 2px 2px gray;
+  transition: 250ms ease;
+  word-wrap: break-word;
+}
+.task:hover {
+  border: 1px solid gray;
+}
+li {
+  list-style: none;
+}
+.hidden {
+  display: none;
+}
+
+h1 {
+  text-transform: uppercase;
+}
+
 .header h3 {
   margin: 10px 0;
 }
@@ -86,4 +105,17 @@ h1 {
 
 .form input {
   margin: auto auto;
+}
+
+.scroll {
+  overflow-y: scroll;
+  height: 320px;
+}
+#time {
+  font-size: 12px;
+  font-weight: 600;
+  color: crimson;
+}
+.blue {
+  color: darkblue;
 }

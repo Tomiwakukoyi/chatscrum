@@ -1,0 +1,46 @@
+.user {
+  padding: 7px;
+  border-bottom: 1px solid rgb(168, 168, 168);
+  background-color: white;
+}
+.fa-user {
+  padding: 3px;
+  margin-right: 10px;
+  color: rgb(4, 64, 124);
+}
+.main {
+  width: 270px;
+  height: fit-content;
+  box-shadow: 2px 4px 6px gray;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+h4 {
+  text-align: center;
+  background-color: rgb(172, 172, 172);
+  padding: 5px;
+  color: #333;
+  margin: 0;
+  width: 270px;
+}
+#userlist {
+  transform: translateY(200px);
+  animation: slideUp 200ms linear 1 forwards;
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(200px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.hidden {
+  display: none;
+}
+.show {
+  display: contents;
+}
